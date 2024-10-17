@@ -1,7 +1,7 @@
 package Aplikacja.aplikacjadostatystyk.football_api_entity;
 
 
-public class Team {
+public class ApiTeam {
     private Area area;
     private int id;
     private String name;

@@ -18,8 +18,23 @@ public class Users {
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Friend> friends;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_teams",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "team_id")}
+    )
+    private List<Team> favoriteTeams;
 
-    public Users( String name, String email, String password) {
+    public List<Team> getFavoriteTeams() {
+        return favoriteTeams;
+    }
+
+    public void setFavoriteTeams(List<Team> favoriteTeams) {
+        this.favoriteTeams = favoriteTeams;
+    }
+
+    public Users(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;

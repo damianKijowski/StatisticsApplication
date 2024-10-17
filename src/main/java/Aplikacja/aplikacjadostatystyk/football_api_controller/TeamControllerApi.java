@@ -1,6 +1,6 @@
 package Aplikacja.aplikacjadostatystyk.football_api_controller;
 
-import Aplikacja.aplikacjadostatystyk.football_api_entity.Team;
+import Aplikacja.aplikacjadostatystyk.football_api_entity.ApiTeam;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,16 +13,16 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/team")
-public class TeamController {
+public class TeamControllerApi {
 
     private String url = "https://api.football-data.org/v4/teams";
 
     @GetMapping("/team/{id}")
-    public ResponseEntity<Team> getTeam(@PathVariable Integer id) {
+    public ResponseEntity<ApiTeam> getTeam(@PathVariable Integer id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
-        ResponseEntity<Team> response = new RestTemplate().exchange(url+"/{id}", HttpMethod.GET, entity, Team.class, id);
+        ResponseEntity<ApiTeam> response = new RestTemplate().exchange(url+"/{id}", HttpMethod.GET, entity, ApiTeam.class, id);
         return response;
     }
 

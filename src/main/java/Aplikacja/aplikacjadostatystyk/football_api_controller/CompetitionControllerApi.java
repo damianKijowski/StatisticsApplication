@@ -1,7 +1,6 @@
 package Aplikacja.aplikacjadostatystyk.football_api_controller;
 
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Competition;
-import Aplikacja.aplikacjadostatystyk.football_api_entity.Team;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/competition")
-public class CompetitionController {
+public class CompetitionControllerApi {
 
     private String url = "https://api.football-data.org/v4/competitions";
 

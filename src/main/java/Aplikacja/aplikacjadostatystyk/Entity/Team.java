@@ -1,9 +1,9 @@
 package Aplikacja.aplikacjadostatystyk.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Team {
@@ -11,18 +11,33 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int apiId;
-    private String name;
-    private int areaId;
-    private String areaName;
+    private int teamId;
+    private int userId;
 
-    public Team(int id, int apiId, String name, int areaId, String areaName) {
-        this.id = id;
-        this.apiId = apiId;
-        this.name = name;
-        this.areaId = areaId;
-        this.areaName = areaName;
+    public int getTeamId() {
+        return teamId;
     }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Team(int id, int apiId) {
+        this.id = id;
+        this.teamId = teamId;
+        this.userId = userId;
+
+
+    }
+
 
     public Team() {
     }
@@ -35,35 +50,5 @@ public class Team {
         this.id = id;
     }
 
-    public int getApiId() {
-        return apiId;
-    }
 
-    public void setApiId(int apiId) {
-        this.apiId = apiId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAreaId() {
-        return areaId;
-    }
-
-    public void setAreaId(int areaId) {
-        this.areaId = areaId;
-    }
-
-    public String getAreaName() {
-        return areaName;
-    }
-
-    public void setAreaName(String areaName) {
-        this.areaName = areaName;
-    }
 }
