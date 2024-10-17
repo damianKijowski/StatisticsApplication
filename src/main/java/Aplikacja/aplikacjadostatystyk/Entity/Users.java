@@ -1,23 +1,29 @@
 package Aplikacja.aplikacjadostatystyk.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-    public String name;
-    public String email;
-    public String password;
+    private int id;
+    private String name;
+    private String email;
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Friend> friends;
+
     public Users( String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.friends = new ArrayList<>();
     }
 
 
@@ -57,6 +63,11 @@ public class Users {
         this.password = password;
     }
 
+    public List<Friend> getFriends() {
+        return friends;
+    }
 
-
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
 }

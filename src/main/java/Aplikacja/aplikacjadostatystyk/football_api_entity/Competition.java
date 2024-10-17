@@ -1,26 +1,17 @@
-package Aplikacja.aplikacjadostatystyk.Entity;
+package Aplikacja.aplikacjadostatystyk.football_api_entity;
 
-
-import Aplikacja.aplikacjadostatystyk.football_api_entity.Area;
-import jakarta.persistence.*;
-
-@Entity
 public class Competition {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String flag;
-    
+
     private Area area;
     private String code;
     private String emblem;
 
     public Competition() {};
-    public Competition(String name, String flag, Area area, String code, String emblem) {
+    public Competition(String name, Area area, String code, String emblem) {
         this.name = name;
-        this.flag = flag;
         this.area = area;
         this.code = code;
         this.emblem = emblem;
@@ -41,13 +32,6 @@ public class Competition {
         this.name = name;
     }
 
-    public String getFlag() {
-        return flag;
-    }
-
-    public void setFlag(String flag) {
-        this.flag = flag;
-    }
 
     public Area getArea() {
         return area;
