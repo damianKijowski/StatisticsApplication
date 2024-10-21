@@ -7,6 +7,15 @@ public class ApiTeam {
     private String name;
     private String tla;
     private String venue;
+    private String crest;
+
+    public String getCrest() {
+        return crest;
+    }
+
+    public void setCrest(String crest) {
+        this.crest = crest;
+    }
 
     // Getters and Setters
     public Area getArea() {
@@ -53,5 +62,15 @@ public class ApiTeam {
         this.venue = venue;
     }
 
+    public ApiTeam(Area area, int id, String name, String tla, String venue, String crest) {
+        this.area = area;
+        this.id = id;
+        this.name = name;
+        this.tla = tla;
+        this.venue = venue;
+        this.crest = crest;
+    }
 
+    public ApiTeam() {
+    }
 }
