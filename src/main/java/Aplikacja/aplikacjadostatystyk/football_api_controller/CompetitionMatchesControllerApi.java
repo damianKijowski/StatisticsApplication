@@ -20,14 +20,13 @@ public class CompetitionMatchesControllerApi {
     private String url = "https://api.football-data.org/v4/competitions";
 
 
-    public ResponseEntity<Match> getCompetitionMatches(String competitionId, String dateFrom, String dateTo) {
+    public Match getCompetitionMatches(String competitionId, String dateFrom, String dateTo) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Match> response = new RestTemplate().exchange(url + "/{competitionId}/matches?dateFrom={dateFrom}&dateTo={dateTo}", HttpMethod.GET,
                 entity, Match.class, competitionId, dateFrom, dateTo);
-        //Match match = new RestTemplate().getForObject(url + "/{competitionId}/matches?dateFrom={dateFrom}&dateTo={dateTo}", Match.class,competitionId,dateFrom,dateTo)
 
-        return response;
+        return response.getBody();
     }
 }
