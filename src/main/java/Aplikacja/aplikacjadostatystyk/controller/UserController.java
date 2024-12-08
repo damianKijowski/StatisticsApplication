@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
 
@@ -37,6 +38,11 @@ public class UserController {
     @PutMapping
     public Users updateUser(@RequestBody Users user) {
         return userService.updateUser(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Users user) {
+        return userService.login(user.getName(), user.getPassword());
     }
 
 }
