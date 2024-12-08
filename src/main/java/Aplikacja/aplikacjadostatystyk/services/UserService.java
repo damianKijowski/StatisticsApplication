@@ -35,5 +35,15 @@ public class UserService {
         return null;
     }
 
+    public String login(String name, String password) {
+        Users user = userRepository.findByName(name);
+        if(user.getPassword().equals(password)) {
+            return "ok";
+        }
+        return "not";
+
+    }
+
+
 
 }

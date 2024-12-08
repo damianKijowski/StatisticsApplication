@@ -27,7 +27,7 @@ public class TeamService {
         List<Team> teams = teamRepository.findByUserId(userId);
         List<ApiTeam> apiTeams = new ArrayList<>();
         for (Team team : teams) {
-            apiTeams.add(teamControllerApi.getTeam(team.getTeamId()).getBody());
+            apiTeams.add(teamControllerApi.getTeam(team.getTeamId()));
         }
         return apiTeams;
     }
