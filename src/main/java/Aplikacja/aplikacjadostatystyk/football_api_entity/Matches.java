@@ -13,14 +13,16 @@ public class Matches {
     private ApiTeam homeTeam;
     private ApiTeam awayTeam;
     private Score score;
+    private CompetitionName competition;
 
-    public Matches(int id, String status, String date, ApiTeam homeTeam, Score score, ApiTeam awayTeam) {
+    public Matches(int id, String status, String date, ApiTeam homeTeam, Score score, ApiTeam awayTeam, CompetitionName competition) {
         this.id = id;
         this.status = status;
         this.date = date;
         this.homeTeam = homeTeam;
         this.score = score;
         this.awayTeam = awayTeam;
+        this.competition = competition;
     }
 
     public Matches() {
@@ -32,6 +34,14 @@ public class Matches {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public CompetitionName getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(CompetitionName competition) {
+        this.competition = competition;
     }
 
     public String getStatus() {
