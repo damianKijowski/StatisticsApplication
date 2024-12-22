@@ -6,10 +6,12 @@ import Aplikacja.aplikacjadostatystyk.football_api_entity.Match;
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Matches;
 import Aplikacja.aplikacjadostatystyk.repository.PredictionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PredicitonService {
@@ -45,10 +47,7 @@ public class PredicitonService {
         {
             return 0;
         }
-
-
     }
-
 
     public Iterable <Prediction> getAllPredictions() {
          Iterable <Prediction> predictions = predictionRepository.findAll();
@@ -60,5 +59,22 @@ public class PredicitonService {
              predictions2.add(prediction);
          }
          return predictions2;
+    }
+
+    public Prediction getPredictionByMatchId(int matchId) {
+        Matches match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(matchId));
+        Prediction prediction = predictionRepository.findByMatchId(matchId);
+        prediction.setMatch(match);
+        prediction.setResult(getResult(match));
+        return prediction;
+    }
+
+    public Prediction updatePrediction(Prediction prediction) {
+        Prediction prediction1 = predictionRepository.findByMatchId(prediction.getMatchId());
+        if(Objects.nonNull(prediction1)){
+            predictionRepository.delete(prediction1);
+            predictionRepository.save(prediction);
+        }
+        return prediction1;
     }
 }

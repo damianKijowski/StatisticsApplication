@@ -2,25 +2,36 @@ package Aplikacja.aplikacjadostatystyk.Entity;
 
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Match;
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Matches;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
 @Entity
 public class Prediction {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int prediction;
     @Transient
     private Matches match;
+    private int matchId;
     @Transient
     private int result;
+
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
+    }
+
+
 
     public Prediction(int id, int prediction, Matches match, int result) {
         this.id = id;
         this.prediction = prediction;
         this.match = match;
+        this.matchId = match.getId();
         this.result = result;
     }
 

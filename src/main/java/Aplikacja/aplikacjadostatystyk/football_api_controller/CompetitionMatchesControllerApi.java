@@ -36,7 +36,6 @@ public class CompetitionMatchesControllerApi {
 
         ResponseEntity<Match> response = new RestTemplate().exchange(url + "/{league}" + "/matches?dateFrom={dateFrom}&dateTo={dateTo}", HttpMethod.GET,
                 entity, Match.class, league, dateFrom, dateTo);
-        System.out.println(response.getBody());
         return response.getBody();
     }
 

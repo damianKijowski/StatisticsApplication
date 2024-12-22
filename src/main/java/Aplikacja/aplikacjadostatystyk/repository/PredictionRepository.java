@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PredictionRepository extends CrudRepository<Prediction, Integer> {
-
+    Prediction findByMatchId(int matchId);
 }
