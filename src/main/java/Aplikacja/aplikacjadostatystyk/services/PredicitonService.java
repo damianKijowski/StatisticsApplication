@@ -3,10 +3,8 @@ package Aplikacja.aplikacjadostatystyk.services;
 import Aplikacja.aplikacjadostatystyk.Entity.Prediction;
 import Aplikacja.aplikacjadostatystyk.football_api_controller.CompetitionMatchesControllerApi;
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Match;
-import Aplikacja.aplikacjadostatystyk.football_api_entity.Matches;
 import Aplikacja.aplikacjadostatystyk.repository.PredictionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,14 +23,14 @@ public class PredicitonService {
         return predictionRepository.save(prediciton);
     }
     public Prediction getPrediction(int id) {
-        Matches match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(id));
+        Match match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(id));
         Prediction prediction = predictionRepository.findById(id).orElse(null);
         prediction.setMatch(match);
         prediction.setResult(getResult(match));
         return prediction;
     }
 
-    public int getResult(Matches match)
+    public int getResult(Match match)
     {
         int homeTeamResult = match.getScore().getFullTime().getHome();
         int awayTeamResult = match.getScore().getFullTime().getAway();
@@ -53,7 +51,7 @@ public class PredicitonService {
          Iterable <Prediction> predictions = predictionRepository.findAll();
         List <Prediction> predictions2 = new ArrayList<>();
          for (Prediction prediction : predictions) {
-             Matches match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(prediction.getId()));
+             Match match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(prediction.getId()));
              prediction.setMatch(match);
              prediction.setResult(getResult(match));
              predictions2.add(prediction);
@@ -62,7 +60,7 @@ public class PredicitonService {
     }
 
     public Prediction getPredictionByMatchId(int matchId) {
-        Matches match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(matchId));
+        Match match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(matchId));
         Prediction prediction = predictionRepository.findByMatchId(matchId);
         prediction.setMatch(match);
         prediction.setResult(getResult(match));

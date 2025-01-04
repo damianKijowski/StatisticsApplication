@@ -25,6 +25,12 @@ public class Users {
             inverseJoinColumns = {@JoinColumn(name = "team_id")}
     )
     private List<Team> favoriteTeams;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Comment> comments;
+
+    public Users() {
+    }
 
     public List<Team> getFavoriteTeams() {
         return favoriteTeams;
@@ -34,17 +40,15 @@ public class Users {
         this.favoriteTeams = favoriteTeams;
     }
 
-    public Users(String name, String email, String password) {
+    public Users(String name, String email, String password, List<Comment> comments) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.comments = comments;
         this.friends = new ArrayList<>();
     }
 
 
-    public Users() {
-
-    }
 
     public int getId() {
         return id;
@@ -84,5 +88,13 @@ public class Users {
 
     public void setFriends(List<Friend> friends) {
         this.friends = friends;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

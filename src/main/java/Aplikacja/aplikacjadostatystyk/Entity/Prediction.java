@@ -1,7 +1,6 @@
 package Aplikacja.aplikacjadostatystyk.Entity;
 
 import Aplikacja.aplikacjadostatystyk.football_api_entity.Match;
-import Aplikacja.aplikacjadostatystyk.football_api_entity.Matches;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +11,7 @@ public class Prediction {
     private int id;
     private int prediction;
     @Transient
-    private Matches match;
+    private Match match;
     private int matchId;
     @Transient
     private int result;
@@ -27,7 +26,7 @@ public class Prediction {
 
 
 
-    public Prediction(int id, int prediction, Matches match, int result) {
+    public Prediction(int id, int prediction, Match match, int result) {
         this.id = id;
         this.prediction = prediction;
         this.match = match;
@@ -54,11 +53,11 @@ public class Prediction {
         this.prediction = prediction;
     }
 
-    public Matches getMatch() {
+    public Match getMatch() {
         return match;
     }
 
-    public void setMatch(Matches match) {
+    public void setMatch(Match match) {
         this.match = match;
     }
 
