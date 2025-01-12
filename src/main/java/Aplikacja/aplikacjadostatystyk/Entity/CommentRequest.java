@@ -3,7 +3,7 @@ package Aplikacja.aplikacjadostatystyk.Entity;
 public class CommentRequest {
     private String content;
     private int matchId;
-    private String userId;
+    private String email;
 
     // Getters and setters
     public String getContent() {
@@ -22,12 +22,12 @@ public class CommentRequest {
         this.matchId = matchId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

@@ -26,7 +26,7 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<Comment> addComment(@RequestBody CommentRequest commentRequest) {
-        Users user = userRepository.findByEmail((commentRequest.getUserId()));
+        Users user = userRepository.findByEmail((commentRequest.getEmail()));
 
         Comment comment = new Comment(
                 commentRequest.getContent(),

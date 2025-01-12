@@ -15,31 +15,37 @@ public class Match {
     private String status;
     @JsonProperty("utcDate")
     private String date;
+    private String minute;
+    private String injuryTime;
+    private String attendance;
+    private String matchDay;
     private ApiTeam homeTeam;
     private ApiTeam awayTeam;
+    private List<Goals> goals;
     private Score score;
+    private List<Bookings> bookings;
+    private List<Substitutions> substitutions;
+    private List<Referees> referees;
     private CompetitionName competition;
 
-    public List<Comment> getMatchComments() {
-        return matchComments;
-    }
-
-    public void setMatchComments(List<Comment> matchComments) {
-        this.matchComments = matchComments;
-    }
-
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
-    private List<Comment> matchComments;
-
-    public Match(int id, String status, String date, ApiTeam homeTeam, Score score, ApiTeam awayTeam, CompetitionName competition, List<Comment> matchComments) {
+    public Match(int id, String status, String date, String minute, String injuryTime, String attendance, String matchDay, ApiTeam homeTeam, ApiTeam awayTeam,
+                 List<Goals> goals, Score score, List<Bookings> bookings,
+                 List<Substitutions> substitutions, List<Referees> referees, CompetitionName competition) {
         this.id = id;
         this.status = status;
         this.date = date;
+        this.minute = minute;
+        this.injuryTime = injuryTime;
+        this.attendance = attendance;
+        this.matchDay = matchDay;
         this.homeTeam = homeTeam;
-        this.score = score;
         this.awayTeam = awayTeam;
+        this.goals = goals;
+        this.score = score;
+        this.bookings = bookings;
+        this.substitutions = substitutions;
+        this.referees = referees;
         this.competition = competition;
-        this.matchComments = matchComments;
     }
 
     public Match() {
@@ -51,14 +57,6 @@ public class Match {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public CompetitionName getCompetition() {
-        return competition;
-    }
-
-    public void setCompetition(CompetitionName competition) {
-        this.competition = competition;
     }
 
     public String getStatus() {
@@ -77,6 +75,38 @@ public class Match {
         this.date = date;
     }
 
+    public String getMinute() {
+        return minute;
+    }
+
+    public void setMinute(String minute) {
+        this.minute = minute;
+    }
+
+    public String getInjuryTime() {
+        return injuryTime;
+    }
+
+    public void setInjuryTime(String injuryTime) {
+        this.injuryTime = injuryTime;
+    }
+
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
+    }
+
+    public String getMatchDay() {
+        return matchDay;
+    }
+
+    public void setMatchDay(String matchDay) {
+        this.matchDay = matchDay;
+    }
+
     public ApiTeam getHomeTeam() {
         return homeTeam;
     }
@@ -93,11 +123,51 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
+    public List<Goals> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goals> goals) {
+        this.goals = goals;
+    }
+
     public Score getScore() {
         return score;
     }
 
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public List<Bookings> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Bookings> bookings) {
+        this.bookings = bookings;
+    }
+
+    public List<Substitutions> getSubstitutions() {
+        return substitutions;
+    }
+
+    public void setSubstitutions(List<Substitutions> substitutions) {
+        this.substitutions = substitutions;
+    }
+
+    public List<Referees> getReferees() {
+        return referees;
+    }
+
+    public void setReferees(List<Referees> referees) {
+        this.referees = referees;
+    }
+
+    public CompetitionName getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(CompetitionName competition) {
+        this.competition = competition;
     }
 }
