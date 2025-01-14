@@ -3,10 +3,16 @@ package Aplikacja.aplikacjadostatystyk.football_api_entity;
 public class Team {
     private int id;
     private String name;
+    private String shortName;
+    private String tla;
+    private String crest;
 
-    public Team(int id, String name) {
+    public Team(int id, String name, String shortName, String tla, String crest) {
         this.id = id;
         this.name = name;
+        this.shortName = shortName;
+        this.tla = tla;
+        this.crest = crest;
     }
 
     public Team() {
@@ -26,5 +32,29 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public String getTla() {
+        return tla;
+    }
+
+    public void setTla(String tla) {
+        this.tla = tla;
+    }
+
+    public String getCrest() {
+        return crest;
+    }
+
+    public void setCrest(String crest) {
+        this.crest = crest;
     }
 }
