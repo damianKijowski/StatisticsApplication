@@ -59,16 +59,16 @@ public class PredicitonService {
          return predictions2;
     }
 
-    public Prediction getPredictionByMatchId(int matchId) {
+    public Prediction getPredictionByMatchId(int matchId, int userId) {
         Match match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(matchId));
-        Prediction prediction = predictionRepository.findByMatchId(matchId);
+        Prediction prediction = predictionRepository.findByMatchIdAndUserId(matchId, userId);
         prediction.setMatch(match);
         prediction.setResult(getResult(match));
         return prediction;
     }
 
     public Prediction updatePrediction(Prediction prediction) {
-        Prediction prediction1 = predictionRepository.findByMatchId(prediction.getMatchId());
+        Prediction prediction1 = predictionRepository.findByMatchIdAndUserId(prediction.getMatchId(), prediction.getUserId());
         if(Objects.nonNull(prediction1)){
             predictionRepository.delete(prediction1);
             predictionRepository.save(prediction);

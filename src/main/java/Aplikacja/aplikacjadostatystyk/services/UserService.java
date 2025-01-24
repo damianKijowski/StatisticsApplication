@@ -43,6 +43,11 @@ public class UserService {
         return new Users();
     }
 
-
+    public String getUserByEmail(String email) {
+        if(userRepository.findByEmail(email) != null){
+            return "User with specified email already exists";
+        }
+        return "ok";
+    }
 
 }

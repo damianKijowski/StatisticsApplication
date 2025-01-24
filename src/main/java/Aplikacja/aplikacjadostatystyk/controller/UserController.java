@@ -45,4 +45,8 @@ public class UserController {
         return userService.login(user.getName(), user.getPassword());
     }
 
+    @GetMapping("/{email}")
+    public String getUserByEmail(@PathVariable String email) {
+        return userService.getUserByEmail(email);
+    }
 }

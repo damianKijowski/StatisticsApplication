@@ -25,9 +25,9 @@ public class PredictionController {
         return ResponseEntity.ok()
                 .body(predictionService.addPrediction(prediction));
     }
-    @GetMapping("/match/{matchId}")
-    public Prediction getPredictionByMatchId(@PathVariable int matchId) {
-        return predictionService.getPredictionByMatchId(matchId);
+    @GetMapping("/match/{matchId}/{userId}")
+    public Prediction getPredictionByMatchId(@PathVariable int matchId, @PathVariable int userId) {
+        return predictionService.getPredictionByMatchId(matchId, userId);
     }
 
     @GetMapping

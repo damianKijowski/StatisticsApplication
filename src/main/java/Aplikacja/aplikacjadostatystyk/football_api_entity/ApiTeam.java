@@ -12,12 +12,13 @@ public class ApiTeam {
     private String crest;
     private Coach coach;
     private String formation;
+    private Statistics statistics;
     private List<Lineup> lineup;
     private List<Lineup> bench;
 
 
     public ApiTeam(Area area, int id, String name, String tla, String venue, String crest, Coach coach, String formation,
-                   List<Lineup> lineup, List<Lineup> bench) {
+                   List<Lineup> lineup, List<Lineup> bench, Statistics statistics) {
         this.area = area;
         this.id = id;
         this.name = name;
@@ -28,9 +29,19 @@ public class ApiTeam {
         this.formation = formation;
         this.lineup = lineup;
         this.bench = bench;
+        this.statistics = statistics;
     }
 
+
     public ApiTeam() {
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(Statistics statistics) {
+        this.statistics = statistics;
     }
 
     public Area getArea() {

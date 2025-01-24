@@ -15,6 +15,7 @@ public class Prediction {
     private int matchId;
     @Transient
     private int result;
+    private int userId;
 
     public int getMatchId() {
         return matchId;
@@ -26,12 +27,21 @@ public class Prediction {
 
 
 
-    public Prediction(int id, int prediction, Match match, int result) {
+    public Prediction(int id, int prediction, Match match, int result, int userId) {
         this.id = id;
         this.prediction = prediction;
         this.match = match;
         this.matchId = match.getId();
         this.result = result;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Prediction() {

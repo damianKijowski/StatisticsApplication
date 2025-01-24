@@ -1,5 +1,6 @@
 package Aplikacja.aplikacjadostatystyk.controller;
 
+import Aplikacja.aplikacjadostatystyk.Entity.League;
 import Aplikacja.aplikacjadostatystyk.Entity.Team;
 import Aplikacja.aplikacjadostatystyk.football_api_entity.ApiTeam;
 import Aplikacja.aplikacjadostatystyk.services.TeamService;
@@ -24,4 +25,5 @@ public class FavTeamController {
     public List<ApiTeam> getTeams(@PathVariable int userId) {
         return teamService.getTeams(userId);
     }
+
 }

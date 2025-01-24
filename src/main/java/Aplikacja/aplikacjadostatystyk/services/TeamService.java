@@ -1,5 +1,6 @@
 package Aplikacja.aplikacjadostatystyk.services;
 
+import Aplikacja.aplikacjadostatystyk.Entity.League;
 import Aplikacja.aplikacjadostatystyk.Entity.Team;
 import Aplikacja.aplikacjadostatystyk.football_api_controller.TeamControllerApi;
 import Aplikacja.aplikacjadostatystyk.football_api_entity.ApiTeam;
