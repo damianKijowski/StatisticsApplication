@@ -58,7 +58,6 @@ public class PredicitonService {
          }
          return predictions2;
     }
-
     public Prediction getPredictionByMatchId(int matchId, int userId) {
         Match match = competitionMatchesControllerApi.getCompetitionMatch(Integer.toString(matchId));
         Prediction prediction = predictionRepository.findByMatchIdAndUserId(matchId, userId);
@@ -66,7 +65,6 @@ public class PredicitonService {
         prediction.setResult(getResult(match));
         return prediction;
     }
-
     public Prediction updatePrediction(Prediction prediction) {
         Prediction prediction1 = predictionRepository.findByMatchIdAndUserId(prediction.getMatchId(), prediction.getUserId());
         if(Objects.nonNull(prediction1)){

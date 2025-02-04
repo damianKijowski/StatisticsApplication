@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/competition")
-@CrossOrigin
 @RestController
 public class CompetitionController {
     @Autowired
@@ -18,7 +17,6 @@ public class CompetitionController {
     public List <Competition> getAllCompetitions() {
         return competitionControllerApi.getAllCompetitions().getCompetitions();
     }
-
     @GetMapping("/{competitionId}/standings")
     public Standings getCompetitionStandings(@PathVariable String competitionId) {
         return competitionControllerApi.getCompetitionStandings(competitionId);

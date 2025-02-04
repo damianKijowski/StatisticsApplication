@@ -26,16 +26,16 @@ public class CompetitionControllerApi {
     @GetMapping("/{code}")
     public ResponseEntity<Competition> getCompetition(@PathVariable String code) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Competition> response = new RestTemplate().exchange(url+"/{code}", HttpMethod.GET, entity, Competition.class, code);
         return response;
     }
 
-    @GetMapping()
+
     public Competitions getAllCompetitions() {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Competitions> response = new RestTemplate().exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<Competitions>() {
         });
@@ -45,7 +45,7 @@ public class CompetitionControllerApi {
     public Standings getCompetitionStandings(String competitionId) {
         HttpHeaders headers = new HttpHeaders();
         System.out.println("ID: " + competitionId);
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Standings> response = new RestTemplate().exchange(url + "/{competitionId}/standings?season=2024", HttpMethod.GET,
                 entity, new ParameterizedTypeReference<Standings>(){}, competitionId);

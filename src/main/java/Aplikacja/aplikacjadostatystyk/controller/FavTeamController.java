@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/favTeam")
 public class FavTeamController {
-
     @Autowired
     private TeamService teamService;
 
@@ -26,4 +25,8 @@ public class FavTeamController {
         return teamService.getTeams(userId);
     }
 
+    @DeleteMapping("/{userId}/{teamId}")
+    public void deleteTeam(@PathVariable int userId, @PathVariable int teamId) {
+        teamService.removeFavTeam(userId, teamId);
+    }
 }

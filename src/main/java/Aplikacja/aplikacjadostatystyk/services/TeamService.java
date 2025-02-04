@@ -21,7 +21,10 @@ public class TeamService {
     private TeamControllerApi teamControllerApi;
 
     public Team addTeam(Team team) {
-        return teamRepository.save(team);
+        if(teamRepository.findByUserIdAndTeamId(team.getUserId(), team.getTeamId()) == null) {
+            return teamRepository.save(team);
+        }
+       return null;
     }
 
     public List<ApiTeam> getTeams(int userId) {
@@ -31,5 +34,10 @@ public class TeamService {
             apiTeams.add(teamControllerApi.getTeam(team.getTeamId()));
         }
         return apiTeams;
+    }
+
+    public void removeFavTeam(int userId, int teamId){
+        Team team = teamRepository.findByUserIdAndTeamId(userId, teamId);
+        teamRepository.delete(team);
     }
 }

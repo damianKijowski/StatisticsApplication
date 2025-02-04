@@ -21,11 +21,6 @@ public class FriendController {
         return friendService.addFriend(friend.getUserId(), friend.getUserFriendId());
     }
 
-//    @GetMapping("/{id}")
-//    public Optional<Friend> getFriend(@PathVariable Integer id) {
-//        return friendService.getFriendById(id);
-//    }
-
     @DeleteMapping("/{id}")
     public void deleteFriend(@PathVariable Integer id) {
         friendService.deleteFriendById(id);

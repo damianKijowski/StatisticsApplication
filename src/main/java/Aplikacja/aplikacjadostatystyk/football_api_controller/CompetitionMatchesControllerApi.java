@@ -20,7 +20,7 @@ public class CompetitionMatchesControllerApi {
 
     public Matches getMatches(String dateFrom, String dateTo) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
 
         ResponseEntity<Matches> response = new RestTemplate().exchange(url2+ "?dateFrom={dateFrom}&dateTo={dateTo}", HttpMethod.GET,
@@ -31,7 +31,7 @@ public class CompetitionMatchesControllerApi {
 
     public Matches getCompetitionMatches(String league, String dateFrom, String dateTo){
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
 
         ResponseEntity<Matches> response = new RestTemplate().exchange(url + "/{league}" + "/matches?dateFrom={dateFrom}&dateTo={dateTo}", HttpMethod.GET,
@@ -41,7 +41,7 @@ public class CompetitionMatchesControllerApi {
 
     public Match getCompetitionMatch(String matchId) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Match> response = new RestTemplate().exchange(url2 + "/{matchId}", HttpMethod.GET,
                 entity, Match.class, matchId);

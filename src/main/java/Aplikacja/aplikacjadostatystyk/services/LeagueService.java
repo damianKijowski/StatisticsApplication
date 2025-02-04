@@ -23,11 +23,9 @@ public class LeagueService {
             throw new Exception("League already added to favorite");
         }
     }
-
     public List<League> getAll(int userId) throws Exception {
         return leagueRepository.findAllByUserId(userId);
     }
-
     public void removeLeague(int userId, int leagueId) throws Exception {
         League league = leagueRepository.findByUserIdAndLeagueId(userId, leagueId);
         if(league != null){

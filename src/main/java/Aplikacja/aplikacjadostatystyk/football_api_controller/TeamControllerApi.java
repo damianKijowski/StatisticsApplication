@@ -21,7 +21,7 @@ public class TeamControllerApi {
 
     public ApiTeam getTeam(@PathVariable Integer id) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<ApiTeam> response = new RestTemplate().exchange(url+"/{id}", HttpMethod.GET, entity, ApiTeam.class, id);
         return response.getBody();
@@ -30,7 +30,7 @@ public class TeamControllerApi {
 
     public Matches getMatchesForTeam(int id, String dateFrom, String dateTo) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Auth-Token", "b2aed4a14e5f46aeb60b344c119deab4");
+        headers.add("X-Auth-Token", "{Api_Key}");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<Matches> response = new RestTemplate().exchange(url+"/{id}/matches?dateFrom={dateFrom}&dateTo={dateTo}",
                 HttpMethod.GET, entity, Matches.class, id, dateFrom, dateTo);

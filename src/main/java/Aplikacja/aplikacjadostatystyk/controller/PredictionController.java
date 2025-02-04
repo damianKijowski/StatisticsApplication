@@ -12,10 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/prediction")
 public class PredictionController {
-
     @Autowired
     private PredicitonService predictionService;
-
     @GetMapping("/{id}")
     public Prediction getPrediction(@PathVariable int id) {
         return predictionService.getPrediction(id);
@@ -29,12 +27,10 @@ public class PredictionController {
     public Prediction getPredictionByMatchId(@PathVariable int matchId, @PathVariable int userId) {
         return predictionService.getPredictionByMatchId(matchId, userId);
     }
-
     @GetMapping
     public Iterable<Prediction> getAllPredictions() {
         return predictionService.getAllPredictions();
     }
-
     @PutMapping
     public ResponseEntity<Prediction> updatePrediction(@RequestBody Prediction prediction) {
         return ResponseEntity.ok()

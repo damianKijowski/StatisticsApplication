@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TeamRepository extends CrudRepository<Team, Integer> {
-    public List<Team> findByUserId(int userId);
+    List<Team> findByUserId(int userId);
+    Team findByUserIdAndTeamId(int userId, int teamId);
 }
